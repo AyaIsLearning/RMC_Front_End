@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 
 <html lang="zh-cn" class=" no-touchevents"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<meta http-equiv="Access-Control-Allow-Origin" content="http://127.0.0.1:8000">
+
 	<meta content="IE=edge" http-equiv="X-UA-Compatible">
 	<meta content="initial-scale=1.0, maximum-scale=1.0, user-scalable=no, width=device-width" name="viewport">
 	<meta name="theme-color" content="#4285f4">
@@ -134,9 +134,16 @@
 										password: $("#passwd").val()
 								},
 								success:function(data){
-										alert("ajax success");
-										console.log(JSON.stringify(data));
-										window.setTimeout("location.href='./login.html'", 1200);
+									//	alert("ajax success");
+										console.log(data);
+										console.log(data.status)
+										if(data.status=="1"){
+												alert(data.body.message);
+										}
+										else{
+											alert(data.errmsg);
+										}
+										//window.setTimeout("location.href='./login.html'", 1200);
 								},
 								error:function(data){
 									alert(JSON.stringify(data));
@@ -144,9 +151,9 @@
 						});
 				}
 				$("#tos").click(function(){
-					if(check()==true){
+				//	if(check()==true){
 						register();
-					}
+			//		}
             
         });
     });
